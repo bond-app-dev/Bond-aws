@@ -4,7 +4,9 @@ import morgan from 'morgan';
 import routes from './routes/index.js'; // Importa tus rutas
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
 import path from 'path';
+
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config({ path: './public/.env' });
 }
@@ -21,6 +23,8 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use('/', routes);
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
