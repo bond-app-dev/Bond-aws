@@ -4,7 +4,7 @@ import morgan from 'morgan';
 import routes from './routes/index.js'; // Importa tus rutas
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-
+import path from 'path';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config({ path: './public/.env' });
 }
