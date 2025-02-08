@@ -3,8 +3,11 @@ import cors from 'cors';
 import morgan from 'morgan';
 import routes from './routes/index.js'; // Importa tus rutas
 import bodyParser from 'body-parser';
-//require('dotenv').config({path:'./public/.env'});
-if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'./public/.env'})
+import dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config({ path: './public/.env' });
+}
 
 const port = process.env.PORT || 8080
 

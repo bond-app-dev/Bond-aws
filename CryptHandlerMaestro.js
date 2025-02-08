@@ -1,6 +1,9 @@
 import crypto from 'crypto';
-//if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'./public/.env'})
+import dotenv from 'dotenv';
 
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config({ path: './public/.env' });
+}
 class Metodo {
     getSign() {
         var sign = crypto.createSign('RSA-SHA256');
