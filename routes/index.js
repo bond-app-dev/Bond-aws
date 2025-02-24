@@ -6,7 +6,7 @@ import { CryptoHandler, CryptoHandlerC,CryptoHandlerCH, CryptoHandlerO } from'..
 const router = express.Router();
 
 router.get('/', (req,res)=>{
-   res.status(200).send('ok');
+   res.status(200).send('ok, 1.0');
 })
 
 //---------------------------------------------------ENDPOINTS AL STP DIRECTO, TIENE IP CAMBIANTE-------------------------------------------------------------------------------
