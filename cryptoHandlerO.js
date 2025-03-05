@@ -1,12 +1,12 @@
-const crypto = require('crypto');
+import crypto from('crypto');
+import fs from('fs');
 const sign = crypto.createSign('SHA256');
-const fs = require('fs');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'./public/.env'})
 
 const clave = process.env.CLAVE;
 
 
-class CryptoHandlerO {
+export class CryptoHandlerO {
     constructor(ordenPagoWs) {
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
