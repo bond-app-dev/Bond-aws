@@ -2,8 +2,8 @@ import express from'express';
 import jwt from'jsonwebtoken';
 import axios from'axios';
 import { CryptoHandlerN } from '../cryptoHandler.js';
-import { CryptoHandlerC } from '../cryptoHandlerC';
-import {CryptoHandlerCH} from '../cryptoHandlerCH';
+import { CryptoHandlerC } from '../cryptoHandlerC.js';
+import {CryptoHandlerCH} from '../cryptoHandlerCH.js';
 import {CryptoHandlerO} from'../CryptHandlerMaestro.js';
 
 const router = express.Router();
