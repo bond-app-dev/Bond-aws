@@ -130,8 +130,8 @@ router.get('/Conciliacion', (req,res)=>{
           tipoOrden: decoded.tipoOrden1
         }
         let crypto = new CryptoHandlerC(ordenPagoWs);
-        console.log(crypto);
-        console.log(crypto.getSign())
+        console.log(crypto, "hola");
+        console.log("hola", crypto.getSign())
         ordenPagoWs['page'] = decoded.page1;
         ordenPagoWs['firma'] = crypto.getSign();
       
