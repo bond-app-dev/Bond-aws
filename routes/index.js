@@ -6,7 +6,7 @@ import { CryptoHandler, CryptoHandlerC,CryptoHandlerCH, CryptoHandlerO } from'..
 const router = express.Router();
 
 router.get('/', (req,res)=>{
-   res.status(200).send('ok, 1.0001');
+   res.status(200).send('ok, 1.0002');
 })
 
 //---------------------------------------------------ENDPOINTS AL STP DIRECTO, TIENE IP CAMBIANTE-------------------------------------------------------------------------------
@@ -325,6 +325,15 @@ router.get('/Saldo', (req,res)=>{
       }
     });
 });
+
+
+
+
+
+
+
+
+
 
 //---------------------------------------------------ENDPOINTS AL PROXY-------------------------------------------------------------------------------
 //SON LOS MISMOS QUE LOS DE ARRIBA, PERO MANDAN LLAMAR A LOS ENDPOINTS QUE ESTÁN EN EL PROXY

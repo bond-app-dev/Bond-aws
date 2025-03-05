@@ -5,6 +5,10 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config({ path: './public/.env' });
 }
 class Metodo {
+    constructor(algo){
+        this.algo = algo;
+    }
+
     getSign() {
         var sign = crypto.createSign('RSA-SHA256');
         sign.update(this.cadenaOriginal);
@@ -21,9 +25,11 @@ export class CryptoHandlerS extends Metodo {
                 ordenPagoWs['empresa'] + "|" + //a
                 ordenPagoWs['cuentaOrdenante'] + "|||" ;
     }
+
+    
 }
 
-export class CryptoHandlerO {
+export class CryptoHandlerO extends Metodo{
     constructor(ordenPagoWs) {
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
@@ -32,7 +38,7 @@ export class CryptoHandlerO {
     }
 }
 
-export class CryptoHandlerCH {
+export class CryptoHandlerCH extends Metodo{
     constructor(ordenPagoWs) {
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
@@ -42,7 +48,7 @@ export class CryptoHandlerCH {
 }
 
 
-export class CryptoHandlerC {
+export class CryptoHandlerC extends Metodo{
     constructor(ordenPagoWs) {
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
@@ -52,7 +58,7 @@ export class CryptoHandlerC {
 
 
 
-export class CryptoHandler {
+export class CryptoHandler extends Metodo{
     constructor(ordenPagoWs) {
         this.cadenaOriginal = "||" +
                 ordenPagoWs['institucionContraparte'] + "|" + //a
