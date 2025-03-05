@@ -1,7 +1,10 @@
 import express from'express';
 import jwt from'jsonwebtoken';
 import axios from'axios';
-import { CryptoHandler, CryptoHandlerC,CryptoHandlerCH, CryptoHandlerO } from'../CryptHandlerMaestro.js';
+import { CryptoHandlerN } from '../cryptoHandler.js';
+import CryptoHandlerC from '../cryptoHandlerC';
+import CryptoHandlerCH from '../cryptoHandlerCH';
+import CryptoHandlerO from'../CryptHandlerMaestro.js';
 
 const router = express.Router();
 
@@ -86,7 +89,7 @@ router.get('/registrarOrden', (req,res)=>{
             tipoPago: decoded.tipoPago1
           }
           
-          let crypto =  new CryptoHandler(ordenPagoWs); 
+          let crypto =  new CryptoHandlerN(ordenPagoWs); 
           console.log(crypto);
           ordenPagoWs['firma'] = crypto.getSign(); //se obtiene la firma que pide STP
           console.log(ordenPagoWs);
@@ -169,6 +172,7 @@ router.get('/ConciliacionHistorica', (req,res)=>{
         console.log(ordenPagoWs);
         console.log('crypto:')
         let crypto = new CryptoHandlerCH(ordenPagoWs);
+        
         console.log(crypto);
         ordenPagoWs['page'] = decoded.page1;
         ordenPagoWs['firma'] = crypto.getSign();
