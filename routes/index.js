@@ -96,7 +96,7 @@ router.get('/registrarOrden', (req,res)=>{
           console.log(ordenPagoWs);
           console.log('entra axios');
           axios({
-            url: 'https://prod.stpmex.com:7002/speiws/rest/ordenPago/registra', 
+            url: 'https://10.5.1.1:7002/speiws/rest/ordenPago/registra', 
             method: 'PUT',
             responseType: 'JSON',
             data: ordenPagoWs,
@@ -139,7 +139,7 @@ router.get('/Conciliacion', (req,res)=>{
         console.log(ordenPagoWs);
 
         axios({
-          url: 'https://prod.stpmex.com:7002/efws/API/V2/conciliacion', 
+          url: 'https://10.5.1.1:7002/efws/API/V2/conciliacion', 
           method: 'POST',
           responseType: 'JSON',
           data: ordenPagoWs,
@@ -181,7 +181,7 @@ router.get('/ConciliacionHistorica', (req,res)=>{
         console.log(ordenPagoWs);
 
         axios({
-          url: 'https://prod.stpmex.com:7002/efws/API/V2/conciliacion', 
+          url: 'https://10.5.1.1:7002/efws/API/V2/conciliacion', 
           method: 'POST',
           responseType: 'JSON',
           data: ordenPagoWs,
@@ -222,7 +222,7 @@ router.get('/ConsultaOrden', (req,res)=>{
         console.log(ordenPagoWs);
         
         axios({
-          url: 'https://prod.stpmex.com:7002/efws/API/consultaOrden', 
+          url: 'https://10.5.1.1:7002/efws/API/consultaOrden', 
           method: 'post',
           responseType: 'json',
           data: ordenPagoWs,
@@ -264,7 +264,7 @@ router.get('/ConsultaOrdenes', (req,res)=>{
         console.log(ordenPagoWs);
         
         axios({
-          url: 'https://prod.stpmex.com:7002/efws/API/consultaOrdenes', 
+          url: 'https://10.5.1.1:7002/efws/API/consultaOrdenes', 
           method: 'POST',
           responseType: 'JSON',
           data: ordenPagoWs,
@@ -311,7 +311,7 @@ router.get('/Saldo', (req,res)=>{
         console.log('se formateo el json')
         console.log(ordenPagoWs)
         axios({
-          url: 'https://prod.stpmex.com:7002/efws/API/consultaSaldoCuenta',
+          url: 'https://10.5.1.1:7002/efws/API/consultaSaldoCuenta',
           method: 'POST',
           responseType: 'JSON',
           data: ordenPagoWs,
