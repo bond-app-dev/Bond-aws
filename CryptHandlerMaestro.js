@@ -17,6 +17,7 @@ class Metodo {
 
 export class CryptoHandlerS extends Metodo {
     constructor(ordenPagoWs) {
+        super();
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
                 ordenPagoWs['cuentaOrdenante'] + "|||" ;
@@ -27,6 +28,7 @@ export class CryptoHandlerS extends Metodo {
 
 export class CryptoHandlerO extends Metodo{
     constructor(ordenPagoWs) {
+        super();
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
                 ordenPagoWs['claveRastreo'] + "|" +
@@ -36,6 +38,7 @@ export class CryptoHandlerO extends Metodo{
 
 export class CryptoHandlerCH extends Metodo{
     constructor(ordenPagoWs) {
+        super();
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
                 ordenPagoWs['tipoOrden'] + "|" +
@@ -46,6 +49,7 @@ export class CryptoHandlerCH extends Metodo{
 
 export class CryptoHandlerC extends Metodo{
     constructor(ordenPagoWs) {
+        super();
         this.cadenaOriginal = "||" +
                 ordenPagoWs['empresa'] + "|" + //a
                 ordenPagoWs['tipoOrden'] + "|||" ;
@@ -56,6 +60,7 @@ export class CryptoHandlerC extends Metodo{
 
 export class CryptoHandler extends Metodo{
     constructor(ordenPagoWs) {
+        super();
         this.cadenaOriginal = "||" +
                 ordenPagoWs['institucionContraparte'] + "|" + //a
                 ordenPagoWs['empresa'] + "|||" + //b
