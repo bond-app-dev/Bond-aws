@@ -5,10 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config({ path: './public/.env' });
 }
 class Metodo {
-    constructor(algo){
-        this.algo = algo;
-    }
-
     getSign() {
         var sign = crypto.createSign('RSA-SHA256');
         sign.update(this.cadenaOriginal);

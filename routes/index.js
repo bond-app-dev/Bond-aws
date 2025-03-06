@@ -2,6 +2,9 @@ import express from'express';
 import jwt from'jsonwebtoken';
 import axios from'axios';
 import { CryptoHandler } from '../CryptHandlerMaestro.js';
+import { CryptoHandlerC } from '../CryptHandlerMaestro.js';
+import { CryptoHandlerCH } from '../CryptHandlerMaestro.js';
+import { CryptoHandlerO } from '../CryptHandlerMaestro.js';
 
 const router = express.Router();
 
@@ -170,7 +173,7 @@ router.get('/ConciliacionHistorica', (req,res)=>{
         console.log(ordenPagoWs);
         console.log('crypto:')
         let crypto = new CryptoHandlerCH(ordenPagoWs);
-        
+
         console.log(crypto);
         ordenPagoWs['page'] = decoded.page1;
         ordenPagoWs['firma'] = crypto.getSign();
@@ -213,6 +216,7 @@ router.get('/ConsultaOrden', (req,res)=>{
           tipoOrden: decoded.tipoOrden1
         }
         let crypto = new CryptoHandlerO(ordenPagoWs);
+      
         console.log(crypto)
         ordenPagoWs['firma'] = crypto.getSign();
         console.log(ordenPagoWs);
