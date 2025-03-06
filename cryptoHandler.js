@@ -45,7 +45,3 @@ export class CryptoHandlerN {
 
     
 }
-
-
-
-module.exports = CryptoHandlerN;

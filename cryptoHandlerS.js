@@ -20,5 +20,3 @@ export class CryptoHandlerS {
         return signature_b64;
     }    
 }
-
-module.exports = CryptoHandlerS;

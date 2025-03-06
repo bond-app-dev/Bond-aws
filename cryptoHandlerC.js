@@ -1,5 +1,4 @@
 import crypto from('crypto');
-import fs from('fs');
 const sign = crypto.createSign('SHA256');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'./public/.env'})
 
