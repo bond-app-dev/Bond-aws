@@ -1,10 +1,7 @@
 import express from'express';
 import jwt from'jsonwebtoken';
 import axios from'axios';
-import { CryptoHandlerN } from '../cryptoHandler.js';
-import { CryptoHandlerC } from '../cryptoHandlerC.js';
-import {CryptoHandlerCH } from '../cryptoHandlerCH.js';
-import {CryptoHandlerO} from'../CryptHandlerMaestro.js';
+import { CryptoHandler } from '../CryptHandlerMaestro.js';
 
 const router = express.Router();
 
@@ -89,7 +86,8 @@ router.get('/registrarOrden', (req,res)=>{
             tipoPago: decoded.tipoPago1
           }
           
-          let crypto =  new CryptoHandlerN(ordenPagoWs); 
+          let crypto =  new CryptoHandler(ordenPagoWs); 
+          
           console.log(crypto);
           ordenPagoWs['firma'] = crypto.getSign(); //se obtiene la firma que pide STP
           console.log(ordenPagoWs);
