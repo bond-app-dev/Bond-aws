@@ -26,30 +26,29 @@ router.post('/registraOrden', async (req,res)=>{
     });
     
     console.log("Respuesta API: ", response.data);
-    res.status(200).send('Ok');
+    return res.status(200).send('Ok');
 
   } catch (error) {
     console.log("Error: ", error.message);
     if (error.response) {
       console.error('Código de estado:', error.response.status);
       console.error('Cuerpo del error:', error.response.data);
-      res.status(error.response.status).json({ 
+      return res.status(error.response.status).json({ 
         error: 'Error en la API externa', 
         detalles: error.response.data 
       });
     } else if (error.request) {
       console.error('No hubo respuesta de la API externa:', error.request);
-      res.status(500).json({ error: 'No hubo respuesta de la API externa' });
+      return res.status(500).json({ error: 'No hubo respuesta de la API externa' });
     } else {
       console.error('Error al configurar la solicitud:', error.message);
-      res.status(500).json({ error: 'Error interno en el servidor' });
+      return res.status(500).json({ error: 'Error interno en el servidor' });
     }
   }          
 });
 
 router.post('/cambioEstado', async (req,res)=>{
   console.log('Datos recibidos: ', req.body);
-  res.status(200).send('Ok');
   try {
     const response = await axios({
       url: 'https://bond-app-1.bubbleapps.io/api/1.1/wf/cambiodeestado',
@@ -61,23 +60,23 @@ router.post('/cambioEstado', async (req,res)=>{
     });
 
     console.log("Respuesta API: ", response.data);
-    res.status(200).send('Ok');
+    return res.status(200).send('Ok');
 
   } catch (error) {
     console.log("Error: ", error.message);
     if (error.response) {
       console.error('Código de estado:', error.response.status);
       console.error('Cuerpo del error:', error.response.data);
-      res.status(error.response.status).json({ 
+      return res.status(error.response.status).json({ 
         error: 'Error en la API externa', 
         detalles: error.response.data 
       });
     } else if (error.request) {
       console.error('No hubo respuesta de la API externa:', error.request);
-      res.status(500).json({ error: 'No hubo respuesta de la API externa' });
+      return res.status(500).json({ error: 'No hubo respuesta de la API externa' });
     } else {
       console.error('Error al configurar la solicitud:', error.message);
-      res.status(500).json({ error: 'Error interno en el servidor' });
+      return res.status(500).json({ error: 'Error interno en el servidor' });
     }
   }
 
