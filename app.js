@@ -22,6 +22,11 @@ app.use(cors());
 
 app.use(morgan('dev'));
 app.use('/', routes);
+app.use((req, res, next) => {
+  console.log("Intentando entrar al endpoint: ", req.originalUrl)
+  res.status(404).json({ error: `La ruta '${req.originalUrl}' no existe.` });
+});
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
