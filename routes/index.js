@@ -37,13 +37,13 @@ router.post('/registraOrden', async (req,res)=>{
         error: 'Error en la API externa', 
         detalles: error.response.data 
       });
-    } else if (error.request) {
+    }
+    if (error.request) {
       console.error('No hubo respuesta de la API externa:', error.request);
       return res.status(500).json({ error: 'No hubo respuesta de la API externa' });
-    } else {
+    } 
       console.error('Error al configurar la solicitud:', error.message);
       return res.status(500).json({ error: 'Error interno en el servidor' });
-    }
   }          
 });
 
@@ -71,13 +71,14 @@ router.post('/cambioEstado', async (req,res)=>{
         error: 'Error en la API externa', 
         detalles: error.response.data 
       });
-    } else if (error.request) {
+    } 
+    if (error.request) {
       console.error('No hubo respuesta de la API externa:', error.request);
       return res.status(500).json({ error: 'No hubo respuesta de la API externa' });
-    } else {
+    } 
       console.error('Error al configurar la solicitud:', error.message);
       return res.status(500).json({ error: 'Error interno en el servidor' });
-    }
+    
   }
 
 });
