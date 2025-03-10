@@ -14,6 +14,11 @@ router.get('/', (req,res)=>{
     console.log("Solicitud recibida de IP:", ipCliente);
 })
 
+router.post('/', (req,res)=>{
+  res.status(401).send('Invalid Endpoint');
+  const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+   console.log("Solicitud recibida de IP:", ipCliente);
+})
 //---------------------------------------------------ENDPOINTS AL STP DIRECTO, TIENE IP CAMBIANTE-------------------------------------------------------------------------------
 router.post('/registraOrden', async (req,res)=>{
   console.log('Datos recibidos: ', req.body);
