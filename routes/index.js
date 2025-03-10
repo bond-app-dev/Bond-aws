@@ -10,12 +10,17 @@ const router = express.Router();
 
 router.get('/', (req,res)=>{
    res.status(200).send('ok, 1.0005');
+   const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log("Solicitud recibida de IP:", ipCliente);
 })
 
 //---------------------------------------------------ENDPOINTS AL STP DIRECTO, TIENE IP CAMBIANTE-------------------------------------------------------------------------------
 router.post('/registraOrden', async (req,res)=>{
   console.log('Datos recibidos: ', req.body);
+  
   try {
+    const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log("Solicitud recibida de IP:", ipCliente);
     const response = await axios({
       url: 'https://bond-app-1.bubbleapps.io/api/1.1/wf/pagoabond',
       method: 'post',
@@ -48,6 +53,8 @@ router.post('/registraOrden', async (req,res)=>{
 });
 
 router.post('/cambioEstado', async (req,res)=>{
+  const ipCliente = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    console.log("Solicitud recibida de IP:", ipCliente);
   console.log('Datos recibidos: ', req.body);
   try {
     const response = await axios({
