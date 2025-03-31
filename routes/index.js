@@ -5,6 +5,7 @@ import { CryptoHandler } from '../CryptHandlerMaestro.js';
 import { CryptoHandlerC } from '../CryptHandlerMaestro.js';
 import { CryptoHandlerCH } from '../CryptHandlerMaestro.js';
 import { CryptoHandlerO } from '../CryptHandlerMaestro.js';
+import { CryptoHandlerS } from '../CryptHandlerMaestro.js';
 
 const router = express.Router();
 
@@ -352,15 +353,13 @@ router.get('/Saldo', (req,res)=>{
         console.log('Paso el JwT')
 
         let ordenPagoWs = {
-          empresa:'BOND_APP',
-          cuentaOrdenante:'646180370300000002',
-          firma:'gtwDOr/N5UAfbrt2Exc4ivVcSv9vCd/d0BbGk2oo08uLJRhod+9PbtGi0mizwEcls0vSqCxfqGH/2hoK1GPEJcjjkMPlqUI+bvI35ygI8isOTSQJK6Rwl759gyJdrGYJxGX2x24dtP6eI+GWiVPQiLGHAhPKhAIgPDdn4sBGeNJD1GIrNUXon51OsT4G4Et1h5IFcPShUV97XbdzQO+94EaJQYCma2uODmuZ/0FfoErjxqXEOKakwJxpWKGr5NDlUlqveXeq7P1iHF24dBZom0e68XhhSCZG4jfBlOKJE02YrzyFyXbkeSDbYv0rn+uu+cza7G1JTbJXjbZiNYnBYA=='
+          empresa:decoded.empresa1,
+          cuentaOrdenante: decoded.cuentaordenante1,
         }
-        /*let cadena ='||BOND_APP|646180370300000002|||'
+        /*let cadena ='||BOND_APP|646180370300000002|||'*/
         let crypto = new CryptoHandlerS(ordenPagoWs);
         console.log(crypto)
         ordenPagoWs['firma'] = crypto.getSign();
-        console.log(ordenPagoWs);*/
         console.log('se formateo el json')
         console.log(ordenPagoWs)
         axios({
