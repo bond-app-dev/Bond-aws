@@ -398,23 +398,24 @@ router.get('/Saldo', (req,res)=>{
 //CONVIENE TENER LOS DE ARRIBA COMO BACKUP
 //endpoint para el saldo de la cuenta
 router.get('/SaldoProx', (req,res)=>{
-  const {authorization} = req.headers;  
+  const authorization = req.body.token;  
   
   if(!authorization){return res.status(400);}else   
     jwt.verify(authorization,'BdK=zEw6@}x(z0=I`pm&&e”Fyyv', function(err, decoded) { //decodifica el jwt que recibe de Bubble, con ese string como llave
       if (decoded) {
-        let ordenPagoWs = { //se obtiene el json necesario
-          empresa:'BOND_APP',
-          cuentaOrdenante:'646180370300000002',
-          firma:'gtwDOr/N5UAfbrt2Exc4ivVcSv9vCd/d0BbGk2oo08uLJRhod+9PbtGi0mizwEcls0vSqCxfqGH/2hoK1GPEJcjjkMPlqUI+bvI35ygI8isOTSQJK6Rwl759gyJdrGYJxGX2x24dtP6eI+GWiVPQiLGHAhPKhAIgPDdn4sBGeNJD1GIrNUXon51OsT4G4Et1h5IFcPShUV97XbdzQO+94EaJQYCma2uODmuZ/0FfoErjxqXEOKakwJxpWKGr5NDlUlqveXeq7P1iHF24dBZom0e68XhhSCZG4jfBlOKJE02YrzyFyXbkeSDbYv0rn+uu+cza7G1JTbJXjbZiNYnBYA=='
+        let ordenPagoWs = {
+          empresa: decoded.empresa1,
+          cuentaOrdenante: decoded.cuentaordenante1
         }
         
-        console.log(ordenPagoWs)
+        let crypto = CryptoHandlerS(ordenPagoWs);
+        ordenPagoWs['firma'] = crypto.getSign();
         axios({
-          url: 'http://35.202.214.126:80/efws/API/consultaSaldoCuenta', //este manda llamar el proxy al endpoint de obtener saldo, que se usa para tener mismo IP
+          url: 'https://10.5.1.1:7002/efws/API/consultaSaldoCuenta', //este manda llamar el proxy al endpoint de obtener saldo, que se usa para tener mismo IP
           method: 'POST',
           responseType: 'JSON',
-          data: ordenPagoWs
+          data: ordenPagoWs,
+          headers: {'Content-type': 'application/json', 'Host': 'prod.stpmex.com'}
         })
         .then(function (response) {
           res.send(response.data) // manda la respuesta a Bubble
