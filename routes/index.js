@@ -408,7 +408,7 @@ router.post('/SaldoProx', (req,res)=>{
           cuentaOrdenante: decoded.cuentaordenante1
         }
         
-        let crypto = CryptoHandlerS(ordenPagoWs);
+        let crypto = new CryptoHandlerS(ordenPagoWs);
         ordenPagoWs['firma'] = crypto.getSign();
         axios({
           url: 'https://10.5.1.1:7002/efws/API/consultaSaldoCuenta', //este manda llamar el proxy al endpoint de obtener saldo, que se usa para tener mismo IP
