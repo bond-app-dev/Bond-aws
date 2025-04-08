@@ -397,7 +397,7 @@ router.get('/Saldo', (req,res)=>{
 //SON LOS MISMOS QUE LOS DE ARRIBA, PERO MANDAN LLAMAR A LOS ENDPOINTS QUE ESTÁN EN EL PROXY
 //CONVIENE TENER LOS DE ARRIBA COMO BACKUP
 //endpoint para el saldo de la cuenta
-router.get('/SaldoProx', (req,res)=>{
+router.post('/SaldoProx', (req,res)=>{
   const authorization = req.body.token;  
   
   if(!authorization){return res.status(400);}else   
