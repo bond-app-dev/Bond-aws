@@ -140,7 +140,9 @@ router.get('/registrarOrden', (req,res)=>{
             tipoCuentaOrdenante: decoded.tipoCuentaOrdenante1,
             cuentaOrdenante: decoded.cuentaOrdenante1,
             rfcCurpBeneficiario: decoded.rfcCurpBeneficiario1,
-            tipoPago: decoded.tipoPago1
+            tipoPago: decoded.tipoPago1,
+            longitud: decoded.longi,
+            latitud: decoded.lati
           }
           
           let crypto =  new CryptoHandler(ordenPagoWs); 
