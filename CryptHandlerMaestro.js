@@ -84,9 +84,7 @@ export class CryptoHandler extends Metodo{
                 ordenPagoWs['cuentaBeneficiario'] + "|" + //o
                 ordenPagoWs['rfcCurpBeneficiario'] + "||||||" + //pqrstu
                 ordenPagoWs['conceptoPago'] + "||||||" + //vwxyzaa
-                ordenPagoWs['referenciaNumerica'] + "|" ; //bbcc
-                ordenPagoWs['longitud'] + "|";
-                ordenPagoWs['latitud'] + "||||||";
+                ordenPagoWs['referenciaNumerica'] + "||||||||" ; //bbcc
     }
 }
 
