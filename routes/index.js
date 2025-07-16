@@ -6,6 +6,7 @@ import { CryptoHandlerC } from '../CryptHandlerMaestro.js';
 import { CryptoHandlerCH } from '../CryptHandlerMaestro.js';
 import { CryptoHandlerO } from '../CryptHandlerMaestro.js';
 import { CryptoHandlerS } from '../CryptHandlerMaestro.js';
+import { CryptoHandlerRT } from '../CryptHandlerMaestro.js';
 
 const router = express.Router();
 
@@ -119,6 +120,50 @@ router.post('/getCuenta', (req,res)=>{
 
   res.status(200).send({clabePartner: cuentaEjemplo});
 });
+
+router.post('/devolucionOrden', (req,res) => {
+  const {authorization} = req.headers;
+  if(!authorization){return res.status(400);}else
+    jwt.verify(authorization,'BdK=zEw6@}x(z0=I`pm&&e”Fyyv', function(err, decoded) {
+      if(decoded){
+        let ordenPagoWs = {
+          fechaOperacion: decoded.fechaOperacion1,
+          institucionOperante: decoded.institucionOperante1,
+          claveRastreo: decoded.claveRastreo1,
+          monto: decoded.monto1,
+          digitoIdentificadorBeneficiario: decoded.digitoIdentificadorBeneficiario1,
+          claveRastreoDevolucion: decoded.claveRastreoDevolucion1,
+          medioEntrega: decoded.medioEntrega1
+        }
+
+        let crypto = new CryptoHandlerRT(ordenPagoWs);
+        console.log(crypto)
+        ordenPagoWs['firma'] = crypto.getSign();
+        console.log(ordenPagoWs);
+        console.log('axios:');
+        axios({
+            url: 'https://10.5.1.1:7002/speiws/rest/ordenPago/retornaOrden', 
+            method: 'PUT',
+            responseType: 'JSON',
+            data: ordenPagoWs,
+            headers: {'Content-Type':'application/json', 'Host': 'prod.stpmex.com'}
+          })
+          .then(function (response) {
+            console.log('Respuesta'); //se loggea en la consola
+            res.send(response.data);
+          })
+          .catch((error) => { 
+            console.log('Catch')
+            console.log(error)
+            res.status(400).send(error)
+          }) 
+      }if(err){
+        res.status(400).send('jwt expire');
+      }
+    }
+  );
+});
+
 
 //Dispersión --Done
 router.get('/registrarOrden', (req,res)=>{

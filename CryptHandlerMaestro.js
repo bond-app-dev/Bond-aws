@@ -47,6 +47,9 @@ export class CryptoHandlerCH extends Metodo{
 }
 
 
+
+
+
 export class CryptoHandlerC extends Metodo{
     constructor(ordenPagoWs) {
         super();
@@ -87,6 +90,23 @@ export class CryptoHandler extends Metodo{
                 ordenPagoWs['referenciaNumerica'] + "||||||||" ; //bbcc
     }
 }
+
+
+
+export class CryptoHandlerRT extends Metodo{
+    constructor(ordenPagoWs) {
+        super();
+        this.cadenaOriginal = "||" +
+                ordenPagoWs['fechaOperacion'] + "|" + //a
+                ordenPagoWs['institucionOperante'] + "|" + //f
+                ordenPagoWs['claveRastreo'] + "|" + //e
+                ordenPagoWs['monto'] + "|" + //g
+                ordenPagoWs['digitoIdentificadorBeneficiario'] + "|||" + //b
+                ordenPagoWs['claveRastreoDevolucion'] + "|" + //h
+                ordenPagoWs['medioEntrega'] + "||"; 
+    }
+}
+
 
 
 //export {CryptoHandler, CryptoHandlerC, CryptoHandlerCH, CryptoHandlerO, CryptoHandlerS}
