@@ -131,6 +131,7 @@ router.post('/devolucionOrden', (req,res) => {
           institucionOperante: decoded.institucionOperante1,
           claveRastreo: decoded.claveRastreo1,
           monto: decoded.monto1,
+          empresa: decoded.empresa1,
           digitoIdentificadorBeneficiario: decoded.digitoIdentificadorBeneficiario1,
           claveRastreoDevolucion: decoded.claveRastreoDevolucion1,
           medioEntrega: decoded.medioEntrega1

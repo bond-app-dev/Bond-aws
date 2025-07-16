@@ -100,6 +100,7 @@ export class CryptoHandlerRT extends Metodo{
                 ordenPagoWs['fechaOperacion'] + "|" + //a
                 ordenPagoWs['institucionOperante'] + "|" + //f
                 ordenPagoWs['claveRastreo'] + "|" + //e
+                ordenPagoWS['empresa'] + "|" +
                 ordenPagoWs['monto'] + "|" + //g
                 ordenPagoWs['digitoIdentificadorBeneficiario'] + "|||" + //b
                 ordenPagoWs['claveRastreoDevolucion'] + "|" + //h
